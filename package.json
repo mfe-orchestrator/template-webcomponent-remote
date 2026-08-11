@@ -19,6 +19,7 @@
         "type": "git",
         "url": "https://azimutsrl@dev.azure.com/azimutsrl/Azimut%20Spagna/_git/azimut-espana-signature-fe"
     },
+    "packageManager": "pnpm@11.21.0",
     "scripts": {
         "dev": "vite --host",
         "build": "tsc && vite build",
