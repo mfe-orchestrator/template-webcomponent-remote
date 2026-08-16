@@ -24,7 +24,7 @@
         "dev": "vite --host",
         "build": "tsc && vite build",
         "build:watch": "tsc && vite build --w",
-        "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+        "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
         "preview": "vite preview",
         "prettier-format": "prettier --config .prettierrc './**/*.ts*' --write"
     },
@@ -40,6 +40,7 @@
         "@typescript-eslint/parser": "^8.67.0",
         "@vitejs/plugin-react": "^6.0.5",
         "autoprefixer": "^10.5.4",
+        "eslint": "^10.8.1",
         "lint-staged": "^17.3.0",
         "postcss": "^8.5.26",
         "postcss-import": "17.0.0",

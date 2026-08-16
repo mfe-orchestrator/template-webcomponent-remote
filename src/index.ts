@@ -3,7 +3,8 @@ import MicrofrontendWebComponent from "./MicrofrontendWebComponent"
 
 const name = "microfrontend-web-component"
 
-customElements.get(name) ||
+// Registering twice throws, and the host may well load this bundle more than once.
+if (!customElements.get(name)) {
     customElements.define(
         name,
         r2wc(MicrofrontendWebComponent, {
@@ -11,3 +12,4 @@ customElements.get(name) ||
             }
         })
     )
+}
