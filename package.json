@@ -17,7 +17,7 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://azimutsrl@dev.azure.com/azimutsrl/Azimut%20Spagna/_git/azimut-espana-signature-fe"
+        "url": "https://github.com/mfe-orchestrator/template-webcomponent-remote.git"
     },
     "packageManager": "pnpm@12.14.0",
     "scripts": {
