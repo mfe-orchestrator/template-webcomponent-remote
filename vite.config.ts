@@ -21,13 +21,17 @@ export default defineConfig(({ mode }) => {
                 fileName: format => `index.${format}.js`
             },
             rolldownOptions: {
-                external: ["react", "react-dom"],
+                // Everything that reaches React stays outside the bundle and is read from the
+                // globals the host sets (window.React, window.ReactDOM, window.ReactJSXRuntime):
+                // a bundled copy would call require() for them, which a browser does not have.
+                external: ["react", "react-dom", "react-dom/client", "react/jsx-runtime"],
                 output: {
                     globals: {
                         react: "React",
-                        "react-dom": "ReactDOM"
-                    },
-                    exports: "named"
+                        "react-dom": "ReactDOM",
+                        "react-dom/client": "ReactDOM",
+                        "react/jsx-runtime": "ReactJSXRuntime"
+                    }
                 },
                 plugins: [
                     typescript({
