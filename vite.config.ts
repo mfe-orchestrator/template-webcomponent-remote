@@ -1,7 +1,6 @@
 import react from "@vitejs/plugin-react"
 import { defineConfig, loadEnv } from "vite"
 import { libInjectCss } from "vite-plugin-lib-inject-css"
-import tsconfigPaths from "vite-tsconfig-paths"
 import typescript from "@rollup/plugin-typescript"
 import { resolve } from "path"
 
@@ -9,17 +8,19 @@ import { resolve } from "path"
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd())
     return {
-        plugins: [react(), tsconfigPaths(), libInjectCss()],
+        plugins: [react(), libInjectCss()],
+        // Vite resolves the tsconfig "paths" aliases natively since v8.
+        resolve: { tsconfigPaths: true },
         base: env.VITE_PUBLIC_PATH,
         build: {
             copyPublicDir: false,
             lib: {
                 formats: ["es", "umd"],
-                entry: resolve(__dirname, "src/index.ts"),
+                entry: resolve(import.meta.dirname, "src/index.ts"),
                 name: "index",
                 fileName: format => `index.${format}.js`
             },
-            rollupOptions: {
+            rolldownOptions: {
                 external: ["react", "react-dom"],
                 output: {
                     globals: {
